@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
     
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -25,11 +26,20 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
+    - name: List directory contents
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "Files in current directory:"
+        ls -la
+        echo "Files in scripts directory (if exists):"
+        ls -la scripts || echo "scripts directory not found"
+    
     - name: Setup Google Drive credentials
       run: |
         echo '${{ secrets.GOOGLE_CREDENTIALS }}' > credentials.json
     
-    - name: Load processed publications
+    - name: Initialize processed publications
       run: |
         if [ ! -f processed_publications.json ]; then
           echo '{"processed_publications":[]}' > processed_publications.json
@@ -38,7 +48,8 @@ jobs:
     - name: Run scraper
       env:
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-      run: python scraper_worker.py
+      run: |
+        python scripts/scraper_worker.py
     
     - name: Commit processed publications
       run: |
