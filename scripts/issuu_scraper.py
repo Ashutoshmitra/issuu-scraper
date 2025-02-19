@@ -173,6 +173,7 @@ class IssuuScraper:
             ';': ',',
             '[': '(',
             ']': ')',
+            ' ': '_'  # Replace spaces with underscores
         }
         
         for char, replacement in char_map.items():
@@ -181,12 +182,12 @@ class IssuuScraper:
         # Step 3: Remove any other non-printable characters and control characters
         filename = ''.join(char for char in filename if char.isprintable())
         
-        # Step 4: Replace multiple spaces/dashes with single ones
-        filename = re.sub(r'\s+', ' ', filename)  # Multiple spaces to single space
-        filename = re.sub(r'-+', '-', filename)   # Multiple dashes to single dash
+        # Step 4: Replace multiple underscores/dashes with single ones
+        filename = re.sub(r'_+', '_', filename)  # Multiple underscores to single underscore
+        filename = re.sub(r'-+', '-', filename)  # Multiple dashes to single dash
         
-        # Step 5: Strip spaces and dashes from beginning and end
-        filename = filename.strip(' -')
+        # Step 5: Strip underscores and dashes from beginning and end
+        filename = filename.strip('_-')
         
         # Step 6: Ensure filename isn't too long (max 255 chars is safe for most filesystems)
         if len(filename) > 255:
