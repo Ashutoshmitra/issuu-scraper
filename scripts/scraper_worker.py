@@ -163,16 +163,14 @@ def main():
         logger.info("Google Drive service initialized")
 
         if not verify_folder_access(drive_service, config['google_drive_folder_id']):
-            raise Exception("Cannot access the specified Google Drive folder. Please check folder permissions.")
-
-
+            raise Exception("Cannot access the specified Google Drive folder.")
         
         scraper = IssuuScraper()
         new_books = []
         
         for handle in config['issuu_handles']:
             logger.info(f"Processing handle: {handle}")
-            publications = scraper.get_publications(handle, 10)  # Check last 10 publications
+            publications = scraper.get_publications(handle, 10)
             logger.info(f"Found {len(publications)} publications for {handle}")
             
             for pub_url in publications:
@@ -194,6 +192,7 @@ def main():
                 if not pub_date_str:
                     logger.warning(f"No publication date found for {doc_data.get('title', 'Unknown title')}")
                     continue
+                
                 logger.info(f"Found publication date: {pub_date_str}")
                 pub_date = parse(pub_date_str)
                 if pub_date <= CUTOFF_DATE:
@@ -205,7 +204,9 @@ def main():
                 success = scraper.scrape_publication(handle, pub_url)
                 
                 if success:
-                    pdf_path = f"downloads/{handle}/{pub_id}/{doc_data['title']}.pdf"
+                    # Use the same sanitized filename format as in scrape_publication
+                    sanitized_title = scraper.sanitize_filename(f"{handle}_{doc_data['title']}")
+                    pdf_path = f"downloads/{handle}/{pub_id}/{sanitized_title}.pdf"
                     
                     # Upload to Google Drive
                     file_id, web_link = upload_to_drive(
