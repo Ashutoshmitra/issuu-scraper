@@ -1,0 +1,40 @@
+{
+  "processed_publications": [
+    {
+      "publication_id": "a00c2b12bc540d897fd4b4f7d11c5fff",
+      "metadata": {
+        "title": "Issue 487",
+        "handle": "themonseyview",
+        "publish_date": "2025-02-19",
+        "page_count": 340,
+        "publication_id": "a00c2b12bc540d897fd4b4f7d11c5fff",
+        "drive_link": "https://drive.google.com/file/d/1SHAkioiJykIad279kLHVJ4ghFCjnrVjQ/view?usp=drivesdk"
+      },
+      "processed_at": "2025-02-19T02:32:02.378176"
+    },
+    {
+      "publication_id": "56692be125c415a8a582a5918b1fc05b",
+      "metadata": {
+        "title": "Issue 486",
+        "handle": "themonseyview",
+        "publish_date": "2025-02-12",
+        "page_count": 340,
+        "publication_id": "56692be125c415a8a582a5918b1fc05b",
+        "drive_link": "https://drive.google.com/file/d/1kZMjir8PSauDfwZHUnOzBv--ixteR89K/view?usp=drivesdk"
+      },
+      "processed_at": "2025-02-19T02:32:29.207365"
+    },
+    {
+      "publication_id": "20f5ca23b92053233f250bd1c0d34c04",
+      "metadata": {
+        "title": "Issue 485",
+        "handle": "themonseyview",
+        "publish_date": "2025-02-05",
+        "page_count": 292,
+        "publication_id": "20f5ca23b92053233f250bd1c0d34c04",
+        "drive_link": "https://drive.google.com/file/d/1M32dnVjfQfJdjUUCmFfU8TAHe-Yte5FK/view?usp=drivesdk"
+      },
+      "processed_at": "2025-02-19T02:32:51.769432"
+    }
+  ]
+}
