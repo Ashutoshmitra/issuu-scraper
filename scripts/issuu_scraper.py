@@ -211,10 +211,13 @@ class IssuuScraper:
             revision_id = doc_data['revision_id']
             page_count = doc_data['page_count']
             original_title = doc_data['title']
-            sanitized_title = self.sanitize_filename(original_title)
+            
+            # Create filename with handle prefix
+            filename_with_handle = f"{handle}_{original_title}"
+            sanitized_title = self.sanitize_filename(filename_with_handle)
 
             logger.info(f"Processing {original_title} (ID: {publication_id}) with {page_count} pages")
-            logger.info(f"Sanitized title: {sanitized_title}")
+            logger.info(f"Sanitized title with handle: {sanitized_title}")
 
             # Create output directories
             base_dir = f"downloads/{handle}/{publication_id}"
@@ -267,7 +270,7 @@ class IssuuScraper:
                     if success:
                         successful_downloads += 1
 
-            # Create PDF
+            # Create PDF with handle-prefixed filename
             if successful_downloads > 0:
                 pdf_path = f"{base_dir}/{sanitized_title}.pdf"
                 pdf_created = self.create_pdf(images_dir, pdf_path)
