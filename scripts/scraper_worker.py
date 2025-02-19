@@ -4,6 +4,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
+from datetime import timezone
 from dateutil.parser import parse
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -18,7 +19,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
-CUTOFF_DATE = datetime(2025, 1, 31)
+CUTOFF_DATE = datetime(2025, 1, 31, tzinfo=timezone.utc)
 PROCESSED_PUBS_FILE = 'processed_publications.json'
 CONFIG_FILE = 'config.json'
 
