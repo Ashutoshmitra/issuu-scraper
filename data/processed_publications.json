@@ -1,0 +1,40 @@
+{
+  "processed_publications": [
+    {
+      "publication_id": "a00c2b12bc540d897fd4b4f7d11c5fff",
+      "metadata": {
+        "title": "Issue 487",
+        "handle": "themonseyview",
+        "publish_date": "2025-02-19",
+        "page_count": 340,
+        "publication_id": "a00c2b12bc540d897fd4b4f7d11c5fff",
+        "drive_link": "https://drive.google.com/file/d/1kFGtftvb2QhM4l1_TFXqFmPxvgYnJNOA/view?usp=drivesdk"
+      },
+      "processed_at": "2025-02-19T22:22:19.661610"
+    },
+    {
+      "publication_id": "1de5ab3b5133d91961b50b8fff3232b7",
+      "metadata": {
+        "title": "Vol 19 Issue 20",
+        "handle": "weeklylink.com",
+        "publish_date": "2025-02-19",
+        "page_count": 220,
+        "publication_id": "1de5ab3b5133d91961b50b8fff3232b7",
+        "drive_link": "https://drive.google.com/file/d/1XZYHPFuLDniWAY1UC_5sO2pz4Xr6-T5G/view?usp=drivesdk"
+      },
+      "processed_at": "2025-02-19T22:23:00.195095"
+    },
+    {
+      "publication_id": "f36836376837269e26b1137a631cb7bd",
+      "metadata": {
+        "title": "Weekly Specials",
+        "handle": "weeklylink.com",
+        "publish_date": "2025-02-19",
+        "page_count": 58,
+        "publication_id": "f36836376837269e26b1137a631cb7bd",
+        "drive_link": "https://drive.google.com/file/d/1dEYYgv8nYQbBhr1aHY0hagUV1vt0ewbd/view?usp=drivesdk"
+      },
+      "processed_at": "2025-02-19T22:23:11.687752"
+    }
+  ]
+}
