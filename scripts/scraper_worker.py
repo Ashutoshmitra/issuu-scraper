@@ -142,7 +142,13 @@ def main():
                     continue
                 
                 # Check publication date
-                pub_date = parse(doc_data.get('originalPublishDateInISOString', ''))
+                logger.info(f"Document data: {json.dumps(doc_data, indent=2)}")
+                pub_date_str = doc_data.get('originalPublishDateInISOString')
+                if not pub_date_str:
+                    logger.warning(f"No publication date found for {doc_data.get('title', 'Unknown title')}")
+                    continue
+                logger.info(f"Found publication date: {pub_date_str}")
+                pub_date = parse(pub_date_str)
                 if pub_date <= CUTOFF_DATE:
                     logger.info(f"Publication {pub_id} is before cutoff date, skipping")
                     continue

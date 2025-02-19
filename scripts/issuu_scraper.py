@@ -54,6 +54,7 @@ class IssuuScraper:
     def get_document_data(self, url):
         """Extract document data including ID and page count."""
         try:
+            logger.info(f"Fetching document data from URL: {url}")
             response = self.session.get(url, headers=self.headers)
             response.raise_for_status()
             
@@ -65,17 +66,24 @@ class IssuuScraper:
                 doc_data = data.get('initialDocumentData', {}).get('document', {})
                 
                 if doc_data:
+                    logger.info(f"Found document data for: {doc_data.get('title', 'Unknown')}")
+                    logger.info(f"Publication date: {doc_data.get('originalPublishDateInISOString', 'Not found')}")
                     return {
                         'publication_id': doc_data.get('publicationId'),
                         'page_count': doc_data.get('pageCount', 0),
                         'title': doc_data.get('title'),
-                        'revision_id': doc_data.get('revisionId')
+                        'revision_id': doc_data.get('revisionId'),
+                        'originalPublishDateInISOString': doc_data.get('originalPublishDateInISOString')
                     }
+                else:
+                    logger.error("No document data found in parsed JSON")
             
+            logger.error("Could not find initial-data script tag or data-json attribute")
             raise ValueError("Could not find document data")
             
         except Exception as e:
             logger.error(f"Error getting document data: {str(e)}")
+            logger.error(f"URL was: {url}")
             return None
 
     def download_page_image(self, doc_id, revision_id, page_num, output_path):
