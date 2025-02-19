@@ -64,7 +64,7 @@ def get_google_drive_service():
     try:
         credentials = service_account.Credentials.from_service_account_file(
             'credentials.json', 
-            scopes=SCOPES
+            scopes=['https://www.googleapis.com/auth/drive']  # Updated scope for full drive access
         )
         return build('drive', 'v3', credentials=credentials)
     except Exception as e:
@@ -75,12 +75,14 @@ def upload_to_drive(service, file_path, folder_id):
     try:
         file_metadata = {
             'name': os.path.basename(file_path),
-            'parents': [folder_id]
+            'parents': [folder_id],
+            'supportsAllDrives': True  # Enable shared drive support
         }
         media = MediaFileUpload(file_path, mimetype='application/pdf')
         file = service.files().create(
             body=file_metadata,
             media_body=media,
+            supportsAllDrives=True,  # Enable shared drive support
             fields='id, webViewLink'
         ).execute()
         logger.info(f"Successfully uploaded file: {file.get('webViewLink')}")
@@ -88,6 +90,19 @@ def upload_to_drive(service, file_path, folder_id):
     except Exception as e:
         logger.error(f"Error uploading to Drive: {str(e)}")
         raise
+
+def verify_folder_access(service, folder_id):
+    """Verify access to the shared drive folder"""
+    try:
+        service.files().get(
+            fileId=folder_id,
+            supportsAllDrives=True,
+            fields='id, name'
+        ).execute()
+        return True
+    except Exception as e:
+        logger.error(f"Error verifying folder access: {str(e)}")
+        return False
 
 def format_email_body(new_books):
     body = "Hello!\n\n"
@@ -132,6 +147,11 @@ def main():
         # Initialize services
         drive_service = get_google_drive_service()
         logger.info("Google Drive service initialized")
+
+        if not verify_folder_access(drive_service, config['google_drive_folder_id']):
+            raise Exception("Cannot access the specified Google Drive folder. Please check folder permissions.")
+
+
         
         scraper = IssuuScraper()
         new_books = []

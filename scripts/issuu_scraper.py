@@ -285,35 +285,50 @@ class IssuuScraper:
             return False
 
     def get_publications(self, handle, num_publications):
-        """Get the first N publication URLs for a given handle."""
+        """Get publication URLs with pagination support."""
         base_url = f"https://issuu.com/{handle}"
+        pub_urls = []
+        page = 1
         
-        try:
-            response = self.session.get(base_url, headers=self.headers)
-            response.raise_for_status()
-            
-            soup = BeautifulSoup(response.text, 'html.parser')
-            
-            # Find all publication cards
-            pub_cards = soup.find_all('div', {'data-testid': 'publication-card'})
-            logger.info(f"Found {len(pub_cards)} publication cards")
-            
-            pub_urls = []
-            for card in pub_cards:
-                link = card.find('a', href=lambda x: x and f'/{handle}/docs/' in x)
-                if link and not link['href'].endswith('/docs/') and 'http' not in link['href']:
-                    pub_urls.append(f"https://issuu.com{link['href']}")
-            
-            if not pub_urls:
-                logger.error("No publications found. Check the handle.")
-                return []
-
-            logger.info(f"Extracted {len(pub_urls)} valid publication URLs")
-            return pub_urls[:num_publications]  # Return exactly N publications
-            
-        except Exception as e:
-            logger.error(f"Error getting publications: {str(e)}")
-            return []
+        while len(pub_urls) < num_publications:
+            try:
+                if page == 1:
+                    url = base_url
+                else:
+                    url = f"{base_url}?page={page}"
+                    
+                logger.info(f"Fetching page {page} from {url}")
+                response = self.session.get(url, headers=self.headers)
+                response.raise_for_status()
+                
+                soup = BeautifulSoup(response.text, 'html.parser')
+                pub_cards = soup.find_all('div', {'data-testid': 'publication-card'})
+                
+                if not pub_cards:
+                    logger.info(f"No more publications found on page {page}")
+                    break
+                    
+                logger.info(f"Found {len(pub_cards)} publication cards on page {page}")
+                
+                for card in pub_cards:
+                    link = card.find('a', href=lambda x: x and f'/{handle}/docs/' in x)
+                    if link and not link['href'].endswith('/docs/') and 'http' not in link['href']:
+                        full_url = f"https://issuu.com{link['href']}"
+                        if full_url not in pub_urls:  # Avoid duplicates
+                            pub_urls.append(full_url)
+                            if len(pub_urls) >= num_publications:
+                                break
+                
+                page += 1
+                # Add a small delay between page requests
+                time.sleep(random.uniform(1, 2))
+                
+            except Exception as e:
+                logger.error(f"Error getting publications on page {page}: {str(e)}")
+                break
+        
+        logger.info(f"Total publications found: {len(pub_urls)}")
+        return pub_urls[:num_publications]  # Ensure we don't return more than requested
 
 def main():
     parser = argparse.ArgumentParser(description='Download books from Issuu')
