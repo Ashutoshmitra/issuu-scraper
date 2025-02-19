@@ -8,6 +8,10 @@ on:
     paths:
       - 'config.json'  # Run when config is updated
 
+# Add these permissions
+permissions:
+  contents: write
+  
 jobs:
   scrape-and-upload:
     runs-on: ubuntu-latest
@@ -48,8 +52,8 @@ jobs:
     
     - name: Commit processed publications
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
         git add processed_publications.json
         git commit -m "Update processed publications log" || echo "No changes to commit"
         git push
