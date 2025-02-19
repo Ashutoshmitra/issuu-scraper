@@ -26,14 +26,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: List directory contents
+    - name: Create necessary directories
       run: |
-        echo "Current directory:"
-        pwd
-        echo "Files in current directory:"
-        ls -la
-        echo "Files in scripts directory (if exists):"
-        ls -la scripts || echo "scripts directory not found"
+        mkdir -p downloads
     
     - name: Setup Google Drive credentials
       run: |
