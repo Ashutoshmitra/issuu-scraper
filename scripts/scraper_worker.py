@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
 CUTOFF_DATE = datetime(2025, 1, 31, tzinfo=timezone.utc)
-PROCESSED_PUBS_FILE = 'processed_publications.json'
+PROCESSED_PUBS_FILE = os.path.join('data', 'processed_publications.json')
 CONFIG_FILE = 'config.json'
 
 def load_config():
