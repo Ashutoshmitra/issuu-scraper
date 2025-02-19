@@ -172,7 +172,7 @@ def main():
                         'title': doc_data['title'],
                         'handle': handle,
                         'publish_date': pub_date.strftime('%Y-%m-%d'),
-                        'page_count': doc_data['pageCount'],
+                        'page_count': doc_data['page_count'],
                         'publication_id': pub_id,
                         'drive_link': web_link
                     }
