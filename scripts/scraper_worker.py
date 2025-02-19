@@ -30,9 +30,21 @@ def load_config():
 def load_processed_publications():
     try:
         with open(PROCESSED_PUBS_FILE, 'r') as f:
-            return json.load(f)
+            try:
+                return json.load(f)
+            except json.JSONDecodeError:
+                logger.warning(f"Could not parse {PROCESSED_PUBS_FILE}, creating new file")
+                default_data = {"processed_publications": []}
+                with open(PROCESSED_PUBS_FILE, 'w') as f:
+                    json.dump(default_data, f, indent=2)
+                return default_data
     except FileNotFoundError:
-        return {"processed_publications": []}
+        logger.warning(f"{PROCESSED_PUBS_FILE} not found, creating new file")
+        default_data = {"processed_publications": []}
+        os.makedirs(os.path.dirname(PROCESSED_PUBS_FILE), exist_ok=True)
+        with open(PROCESSED_PUBS_FILE, 'w') as f:
+            json.dump(default_data, f, indent=2)
+        return default_data
 
 def save_processed_publication(pub_id, metadata):
     data = load_processed_publications()
