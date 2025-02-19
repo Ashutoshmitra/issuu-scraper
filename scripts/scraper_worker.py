@@ -119,9 +119,21 @@ def format_email_body(new_books):
     return body
 
 def send_email(subject, body, config):
+    # Skip email sending if no recipients are configured
+    if not config.get('notification_emails'):
+        logger.info("Email notifications disabled - no recipients configured")
+        return
+        
     try:
-        sender_email = config['sender_email']
-        password = os.environ['EMAIL_PASSWORD']
+        sender_email = config.get('sender_email')
+        if not sender_email:
+            logger.info("Email notifications disabled - no sender configured")
+            return
+            
+        password = os.environ.get('EMAIL_PASSWORD')
+        if not password:
+            logger.info("Email notifications disabled - no password configured")
+            return
 
         message = MIMEMultipart()
         message["From"] = sender_email
@@ -136,7 +148,9 @@ def send_email(subject, body, config):
             logger.info("Email notification sent successfully")
     except Exception as e:
         logger.error(f"Error sending email: {str(e)}")
-        raise
+        # Don't raise the exception - just log it and continue
+        # This prevents email errors from stopping the main workflow
+        pass
 
 def main():
     logger.info("Starting scraper job")
