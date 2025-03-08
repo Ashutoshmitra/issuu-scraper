@@ -1,6 +1,18 @@
 {
   "processed_publications": [
     {
+      "publication_id": "cdbc1b072cc6cc747fef0439e00597f3",
+      "metadata": {
+        "title": "Issue 489",
+        "handle": "themonseyview",
+        "publish_date": "2025-03-05",
+        "page_count": 404,
+        "publication_id": "cdbc1b072cc6cc747fef0439e00597f3",
+        "drive_link": "https://drive.google.com/file/d/15DeP_Q0OTphkusCJ_XMMHE8l2q3A1YGa/view?usp=drivesdk"
+      },
+      "processed_at": "2025-03-08T00:36:53.227423"
+    },
+    {
       "publication_id": "8fe495cf17a0e70e8831bbe95ccf1c8d",
       "metadata": {
         "title": "Issue 488",
@@ -8,9 +20,9 @@
         "publish_date": "2025-02-26",
         "page_count": 372,
         "publication_id": "8fe495cf17a0e70e8831bbe95ccf1c8d",
-        "drive_link": "https://drive.google.com/file/d/134IuVgsviRM7FwT2kMyUBQfDoEZu8X3Q/view?usp=drivesdk"
+        "drive_link": "https://drive.google.com/file/d/1lCAG_gB32l8AurcKn8vGW1r-mt1zToEL/view?usp=drivesdk"
       },
-      "processed_at": "2025-03-01T00:50:29.934412"
+      "processed_at": "2025-03-08T00:37:24.166965"
     },
     {
       "publication_id": "a00c2b12bc540d897fd4b4f7d11c5fff",
@@ -20,9 +32,33 @@
         "publish_date": "2025-02-19",
         "page_count": 340,
         "publication_id": "a00c2b12bc540d897fd4b4f7d11c5fff",
-        "drive_link": "https://drive.google.com/file/d/1MYokTj8fJ3Z2F_KUY4InzPCSAtdZmgRZ/view?usp=drivesdk"
+        "drive_link": "https://drive.google.com/file/d/1wVwITec2o-W0XzWQn3trRb5brhILIu8t/view?usp=drivesdk"
       },
-      "processed_at": "2025-03-01T00:51:09.112807"
+      "processed_at": "2025-03-08T00:37:49.992236"
+    },
+    {
+      "publication_id": "c6c2203ad0174496b1d582e5987605c9",
+      "metadata": {
+        "title": "Weekly Specials",
+        "handle": "weeklylink.com",
+        "publish_date": "2025-03-05",
+        "page_count": 102,
+        "publication_id": "c6c2203ad0174496b1d582e5987605c9",
+        "drive_link": "https://drive.google.com/file/d/1Z-vNFz2rHMIAc-VxRr0dGlyz65ecNe9z/view?usp=drivesdk"
+      },
+      "processed_at": "2025-03-08T00:38:02.916087"
+    },
+    {
+      "publication_id": "21e47409fa23cfaf119eee391e575b2c",
+      "metadata": {
+        "title": "Vol 19 Issue 22",
+        "handle": "weeklylink.com",
+        "publish_date": "2025-03-05",
+        "page_count": 276,
+        "publication_id": "21e47409fa23cfaf119eee391e575b2c",
+        "drive_link": "https://drive.google.com/file/d/1dS0882I3STi4u0qZ9SsA4shBCX961Cf6/view?usp=drivesdk"
+      },
+      "processed_at": "2025-03-08T00:38:26.814226"
     },
     {
       "publication_id": "94b1d186490e73e6ee17aa83b64cc306",
@@ -32,9 +68,9 @@
         "publish_date": "2025-02-26",
         "page_count": 246,
         "publication_id": "94b1d186490e73e6ee17aa83b64cc306",
-        "drive_link": "https://drive.google.com/file/d/1kO9e1Kc93vJTcQ7acfz-c1TldsOFZLo0/view?usp=drivesdk"
+        "drive_link": "https://drive.google.com/file/d/1ckvdh1AE2AHMm-ASmNHp9LWudaFa1120/view?usp=drivesdk"
       },
-      "processed_at": "2025-03-01T00:51:32.602598"
+      "processed_at": "2025-03-08T00:38:49.491808"
     },
     {
       "publication_id": "e372c3049e1713fe860e40fc70aec8b6",
@@ -44,9 +80,9 @@
         "publish_date": "2025-02-26",
         "page_count": 78,
         "publication_id": "e372c3049e1713fe860e40fc70aec8b6",
-        "drive_link": "https://drive.google.com/file/d/1pN52gT-4iTGbgAwAasAcvUa-19wJeeHq/view?usp=drivesdk"
+        "drive_link": "https://drive.google.com/file/d/17kAk_dTyHTk2676QSr3bP_Gx2sGXkeZm/view?usp=drivesdk"
       },
-      "processed_at": "2025-03-01T00:51:41.817943"
+      "processed_at": "2025-03-08T00:38:57.994879"
     },
     {
       "publication_id": "1de5ab3b5133d91961b50b8fff3232b7",
@@ -56,9 +92,9 @@
         "publish_date": "2025-02-19",
         "page_count": 220,
         "publication_id": "1de5ab3b5133d91961b50b8fff3232b7",
-        "drive_link": "https://drive.google.com/file/d/1pzhl5k0_flYr8NfIjXxO8n463d7cCjb8/view?usp=drivesdk"
+        "drive_link": "https://drive.google.com/file/d/1Wuw1C0uGgN8jPYpa5p4hSly4rfi_G5RB/view?usp=drivesdk"
       },
-      "processed_at": "2025-03-01T00:52:03.668472"
+      "processed_at": "2025-03-08T00:39:16.806206"
     },
     {
       "publication_id": "f36836376837269e26b1137a631cb7bd",
@@ -68,9 +104,9 @@
         "publish_date": "2025-02-19",
         "page_count": 58,
         "publication_id": "f36836376837269e26b1137a631cb7bd",
-        "drive_link": "https://drive.google.com/file/d/1edF57LFk52mMxMa9KSxp4KyowjDq8yw9/view?usp=drivesdk"
+        "drive_link": "https://drive.google.com/file/d/10UsdhA-o2v7NghhH5O0h474UWYSMP5IM/view?usp=drivesdk"
       },
-      "processed_at": "2025-03-01T00:52:14.321304"
+      "processed_at": "2025-03-08T00:39:23.065517"
     }
   ]
 }
